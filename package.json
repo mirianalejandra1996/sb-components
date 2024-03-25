@@ -1,20 +1,42 @@
 {
-  "name": "my-storybook",
-  "private": true,
-  "version": "0.0.0",
+  "name": "mialedev-custom-components-tst",
+  "private": false,
+  "version": "0.0.1-rc4",
   "type": "module",
+  "main": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "keywords": [
+    "react",
+    "dev"
+  ],
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/mirianalejandra1996/sb-components.git",
+    "type": "git"
+  },
+  "files": [
+    "dist/"
+  ],
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
   "scripts": {
     "dev": "npm run storybook",
-    "build": "tsc && vite build",
+    "build": "npm run clean && tsc && npm run copyfiles",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_e642b8382675c37"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "chromatic": "npx chromatic --project-token=chpt_e642b8382675c37",
+    "clean": "rimraf dist/",
+    "copyfiles": "copyfiles -u 1 src/**/*.css dist/",
+    "push:npm": "np"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.17",
@@ -30,10 +52,15 @@
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
     "@vitejs/plugin-react-swc": "^3.0.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
     "eslint-plugin-storybook": "^0.8.0",
+    "np": "^10.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rimraf": "^5.0.5",
     "storybook": "^7.6.17",
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
